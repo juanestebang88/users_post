@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_ceiba/repositories/post_db_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_application_ceiba/User/repository/post_db_repository.dart';
+import 'package:flutter_application_ceiba/User/repository/user_api_repository.dart';
+import 'package:flutter_application_ceiba/Post/repository/post_api_repository.dart';
+
+import 'package:flutter_application_ceiba/User/bloc/user_bloc.dart';
+import 'package:flutter_application_ceiba/Post/bloc/post_bloc.dart';
+
 import 'package:flutter_application_ceiba/env/environment.dart';
-import 'package:flutter_application_ceiba/bloc/user_bloc/user_bloc.dart';
-import 'package:flutter_application_ceiba/bloc/post_bloc/post_bloc.dart';
 import 'package:flutter_application_ceiba/router/routes.dart';
 
-import 'package:flutter_application_ceiba/repositories/post_api_repository.dart';
-import 'package:flutter_application_ceiba/repositories/user_api_repository.dart';
 
 void main() => runApp(const MyApp());
 

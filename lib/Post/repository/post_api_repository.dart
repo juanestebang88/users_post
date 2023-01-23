@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:flutter_application_ceiba/env/environment.dart';
-import 'package:flutter_application_ceiba/models/post_model.dart';
+import 'package:flutter_application_ceiba/Post/model/post_model.dart';
 
 class PostAPIRepository {
   

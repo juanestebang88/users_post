@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_ceiba/models/post_model.dart';
-import 'package:flutter_application_ceiba/widgets/post_widgets/card_post_widget.dart';
+import 'package:flutter_application_ceiba/Post/model/post_model.dart';
+import 'package:flutter_application_ceiba/Post/ui/widgets/card_post_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_application_ceiba/bloc/post_bloc/post_bloc.dart';
+import 'package:flutter_application_ceiba/Post/bloc/post_bloc.dart';
 import 'package:flutter_application_ceiba/env/environment.dart';
-import 'package:flutter_application_ceiba/models/user_model.dart';
-import 'package:flutter_application_ceiba/widgets/global_widgets/widgets_global.dart';
+import 'package:flutter_application_ceiba/User/model/user_model.dart';
+import 'package:flutter_application_ceiba/widgets/widgets_global.dart';
 
 class PostsScreen extends StatelessWidget {
   const PostsScreen({
@@ -23,11 +23,7 @@ class PostsScreen extends StatelessWidget {
       appBar: const AppBarCustom(),
       body:  BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
-          if (state is PostLoadingState) {
-            return Center(
-              child: CircularProgressIndicator(color: Environment.greenColor,),
-            );
-          }
+          if (state is PostLoadingState) return const ProgressCustom();
           
           if (state is PostLoadedState) {
             List<PostModel> postList = state.posts;
@@ -47,7 +43,9 @@ class PostsScreen extends StatelessWidget {
 
                   TextCustom(text: 'Publicaciones', color: Environment.greenColor, size:25, weight: FontWeight.bold, align: TextAlign.center,),
 
-                  ListView.builder(
+                  postList.isEmpty
+                  ? const Center(child:  TextCustom(text: 'List post is empty', align: TextAlign.center))
+                  : ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: postList.length,
@@ -60,41 +58,11 @@ class PostsScreen extends StatelessWidget {
             );
           }
 
-          if (state is PostErrorState) {
-            return Center(
-              child: TextCustom(text: state.error, align: TextAlign.center,)
-            );
-          } 
-          return const Center(
-            child:  TextCustom(text: 'List post is empty', align: TextAlign.center)
-          );
+          if (state is PostErrorState) return TextCustom(text: state.error, align: TextAlign.center);
+
+          return Container();
         }
       )
     );
   }
 }
-
- /*      Body(
-        child: Column(
-          crossAxisAlignment:CrossAxisAlignment.center,
-          children: [
-            verticalSeparator(context, 2),
-            TextCustom(text: user!.name, color: Environment.greenColor, size:45, weight: FontWeight.bold, align: TextAlign.center,),
-    
-            verticalSeparator(context, 1),
-    
-            TextCustom(text: user!.phone, size: 25, icon: Icons.phone, align: TextAlign.center,),
-    
-            TextCustom(text: user!.email, size: 25, icon: Icons.mail, align: TextAlign.center,),
-
-            verticalSeparator(context, 4),
-
-            TextCustom(text: 'POST', color: Environment.greenColor, size:35, weight: FontWeight.bold, align: TextAlign.center,),
-            
-          ],
-        ),
-      ), */
-
-
-
-

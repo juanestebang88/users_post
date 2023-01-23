@@ -1,4 +1,4 @@
-import 'package:flutter_application_ceiba/models/user_model.dart';
+import 'package:flutter_application_ceiba/User/model/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
@@ -15,7 +15,7 @@ class UserDBRepository {
     );
   }
 
-  Future<Future<int>> insertUsers(UserModel user) async{
+  Future<int> insertUsers(UserModel user) async{
     Database database = await _openDB();
 
     return database.insert(table, user.toMap());
@@ -25,6 +25,22 @@ class UserDBRepository {
     Database database = await _openDB();
     
     final List<Map<String, dynamic>> usersMap = await database.query(table);
+    return List.generate(usersMap.length,
+      (index) => UserModel(
+        id    : usersMap[index]['id'],
+        name  : usersMap[index]['name'],
+        email : usersMap[index]['email'],
+        phone : usersMap[index]['phone']
+      )
+    );
+  }
+
+  Future<List<UserModel>> searchUsers(String value) async {
+    String query = 'SELECT * FROM $table WHERE name LIKE "%$value%"';
+    Database database = await _openDB();
+    
+    final List<Map<String, dynamic>> usersMap = await database.rawQuery(query);
+
     return List.generate(usersMap.length,
       (index) => UserModel(
         id    : usersMap[index]['id'],

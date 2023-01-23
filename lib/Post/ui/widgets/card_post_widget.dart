@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_ceiba/env/environment.dart';
-import 'package:flutter_application_ceiba/models/post_model.dart';
-import 'package:flutter_application_ceiba/widgets/global_widgets/widgets_global.dart';
+import 'package:flutter_application_ceiba/Post/model/post_model.dart';
+import 'package:flutter_application_ceiba/widgets/widgets_global.dart';
 
 class CardPostCustom extends StatelessWidget {
   const CardPostCustom({

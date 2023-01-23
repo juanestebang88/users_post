@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
 
-import 'package:flutter_application_ceiba/models/post_model.dart';
-import 'package:flutter_application_ceiba/repositories/post_api_repository.dart';
+import 'package:flutter_application_ceiba/Post/model/post_model.dart';
+import 'package:flutter_application_ceiba/Post/repository/post_api_repository.dart';
 
 part 'post_event.dart';
 part 'post_state.dart';

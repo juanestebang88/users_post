@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_ceiba/env/environment.dart';
-import 'package:flutter_application_ceiba/widgets/global_widgets/widgets_global.dart';
+import 'package:flutter_application_ceiba/widgets/widgets_global.dart';
 
 class FieldCustom extends StatelessWidget {
   const FieldCustom({

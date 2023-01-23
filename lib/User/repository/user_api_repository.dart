@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:flutter_application_ceiba/env/environment.dart';
-import 'package:flutter_application_ceiba/models/user_model.dart';
+import 'package:flutter_application_ceiba/User/model/user_model.dart';
 
 class UserAPIRepository {
     

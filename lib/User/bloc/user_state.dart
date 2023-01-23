@@ -29,3 +29,9 @@ class UserErrorState extends UserState {
   @override
   List<Object?> get props => [error];
 }
+
+class UserSearchState extends UserState {
+
+  @override
+  List<Object> get props => [];
+}

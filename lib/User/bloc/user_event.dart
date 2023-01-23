@@ -10,3 +10,12 @@ class LoadUserEvent extends UserEvent {
   List<Object> get props => [];
 }
 
+class SearchUserEvent extends UserEvent {
+    const SearchUserEvent(this.name);
+  final String  name;
+
+  @override
+  List<Object> get props => [name];
+}
+
+
